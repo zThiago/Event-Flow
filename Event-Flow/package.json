@@ -14,5 +14,12 @@
     "react": "19.1.0",
     "react-native": "0.81.4"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "^7.28.5",
+    "@babel/plugin-transform-react-jsx": "^7.27.1",
+    "@types/react": "~19.1.10",
+    "babel-preset-expo": "^54.0.6",
+    "typescript": "~5.9.2"
+  }
 }
