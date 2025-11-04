@@ -23,4 +23,50 @@ model User {
   password        String    
   telefone        String
   
+  eventsCreated   Event[]
+  participando    Registros[]
+
+  @@map("users")
+}
+
+model Event {
+  id               Int          @id @default(autoincrement())
+  createdAt        DateTime
+  titulo           String
+  descricao        String
+  data             DateTime
+  localizacao      String
+  status           StatusRegistros @default(PENDENTE)
+  role             UserRole
+
+  creatorId        Int
+  creator          User   @relation(fields: [creatorId], references: [id])
+  participantes    Registros[]
+
+  @@map("eventos")
+}
+
+model Registros {
+  id          String     @id @default(cuid())
+  userId      Int
+  eventId     Int
+  createdAt   DateTime
+
+  user        User       @relation(fields: [userId], references: [id])
+  event       Event      @relation(fields: [eventId], references: [id])
+
+  @@unique([userId, eventId])
+  @@map("registros")     
+}
+
+enum UserRole {
+    USER
+    ADMIN
+}
+
+enum StatusRegistros {
+  PENDENTE
+  CONFIRMADO
+  CANCELADO
+  FINALIZADO
 }
