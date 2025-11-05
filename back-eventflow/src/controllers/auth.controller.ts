@@ -68,8 +68,6 @@ export class AuthController {
   @ApiResponse({ status: 200, description: 'Token atualizado com sucesso' })
   @ApiResponse({ status: 401, description: 'Token inválido' })
   async refreshToken(@Request() req) {
-    // Em uma implementação real, você pode querer criar um refresh token específico
-    // Por enquanto, vamos apenas retornar um novo token com os mesmos dados
     const payload = {
       email: req.user.email,
       sub: req.user.userId,
