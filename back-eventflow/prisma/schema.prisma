@@ -22,6 +22,7 @@ model User {
   nome            String?
   password        String    
   telefone        String
+  role            UserRole 
   
   eventsCreated   Event[]
   participando    Registros[]
@@ -36,8 +37,7 @@ model Event {
   descricao        String
   data             DateTime
   localizacao      String
-  status           StatusRegistros @default(PENDENTE)
-  role             UserRole
+  ativo            Boolean
 
   creatorId        Int
   creator          User   @relation(fields: [creatorId], references: [id])
@@ -51,6 +51,7 @@ model Registros {
   userId      Int
   eventId     Int
   createdAt   DateTime
+  status           StatusRegistros @default(PENDENTE)
 
   user        User       @relation(fields: [userId], references: [id])
   event       Event      @relation(fields: [eventId], references: [id])
@@ -69,4 +70,5 @@ enum StatusRegistros {
   CONFIRMADO
   CANCELADO
   FINALIZADO
+  DESATIVADO
 }
