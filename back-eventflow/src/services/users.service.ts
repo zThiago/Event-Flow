@@ -7,6 +7,10 @@ import * as bcrypt from 'bcryptjs';
 export class UsersService {
     constructor(private prisma: PrismaService){}
 
+    async findAll() {
+        return this.prisma.user.findMany();
+    }
+
     async findByEmail(email: string) {
         return this.prisma.user.findUnique({where: {email: email}});
     }
@@ -39,4 +43,25 @@ export class UsersService {
     async delete(id: number){
         return this.prisma.user.delete({where: {id}});
     }
+
+    async getUserEvents(userId: number) {
+        return this.prisma.event.findMany({
+          where: { 
+            creatorId: userId,
+            isActive: true 
+          },
+          include: {
+            _count: {
+              select: {
+                registrations: {
+                  where: {
+                    status: 'CONFIRMED',
+                  },
+                },
+              },
+            },
+          },
+          orderBy: { createdAt: 'desc' },
+        });
+      }
 }
