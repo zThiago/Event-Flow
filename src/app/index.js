@@ -3,7 +3,7 @@ import { Keyboard, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text,
 import { Link, useRouter } from 'expo-router';
 import { useAuth } from './temporario/authContext';
 import { useState } from 'react';
-import { styles } from '../styles/estilos'
+import { styles } from '../styles/estilosLogin'
 
 
 
