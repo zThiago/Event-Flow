@@ -17,7 +17,7 @@ export default function Details() {
     return (
         <ScrollView style={styles.container}>
             {/* Botão Voltar */}
-            <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+            <TouchableOpacity style={styles.backButton} onPress={() => router.replace("evento/home")}>
                 <Text style={styles.backText}>← Voltar</Text>
             </TouchableOpacity>
 

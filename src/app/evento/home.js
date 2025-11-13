@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, FlatList, Image } from 'react-native';
 import MapView, { Marker } from "react-native-maps";
 import { useState } from "react";
+import { useRouter } from 'expo-router';
 import { styles } from '../../styles/estilosHome';
 import { Link } from "expo-router";
 
@@ -49,38 +50,70 @@ export default function Home() {
             style={styles.search}
             placeholder="Pesquise Eventos, Show e etc..."
           />
-          <Text style={styles.sectionTitle}> <Text style={styles.textDestaq}>Explore</Text> os Eventos</Text>
+          <Text style={styles.sectionTitle}>
+            <Text style={styles.textDestaq}>Explore</Text> os Eventos
+          </Text>
           <View style={styles.divider} />
         </View>
       )}
 
       {/* Mapa */}
-      <TouchableOpacity
-        activeOpacity={1}
-        style={expanded ? styles.mapaFull : styles.mapaCard}
-        onPress={() => setExpanded(!expanded)}
-      >
-        <MapView
-          style={{ flex: 1 }}
-          initialRegion={{
-            latitude: coordinate.latitude,
-            longitude: coordinate.longitude,
-            latitudeDelta: 0.210,
-            longitudeDelta: 0.210,
-          }}
+      {!expanded ? (
+        <TouchableOpacity
+          activeOpacity={0.9}
+          style={styles.mapaCard}
+          onPress={() => setExpanded(true)}
         >
-          <Marker
-            coordinate={coordinate}
-            title="Loja do Daniel S"
-            description="Casa do Samuel, AC"
-          />
-        </MapView>
-      </TouchableOpacity>
+          <MapView
+            style={{ flex: 1 }}
+            initialRegion={{
+              latitude: coordinate.latitude,
+              longitude: coordinate.longitude,
+              latitudeDelta: 0.210,
+              longitudeDelta: 0.210,
+            }}
+          >
+            <Marker
+              coordinate={coordinate}
+              title="Loja do Daniel S"
+              description="Casa do Samuel, AC"
+            />
+          </MapView>
+        </TouchableOpacity>
+      ) : (
+        <View style={styles.mapaFull}>
+          <MapView
+            style={{ flex: 1 }}
+            initialRegion={{
+              latitude: coordinate.latitude,
+              longitude: coordinate.longitude,
+              latitudeDelta: 0.210,
+              longitudeDelta: 0.210,
+            }}
+          >
+            <Marker
+              coordinate={coordinate}
+              title="Loja do Daniel S"
+              description="Casa do Samuel, AC"
+            />
+          </MapView>
+
+          {/* Botão flutuante para fechar */}
+          <TouchableOpacity
+            style={styles.closeButton}
+            onPress={() => setExpanded(false)}
+          >
+            <Text style={styles.closeText}>✖</Text>
+          </TouchableOpacity>
+        </View>
+      )}
 
       {/* Lista de eventos */}
       {!expanded && (
         <View style={{ flex: 1, paddingHorizontal: 16, marginTop: -30 }}>
-          <Text style={styles.header}>Mostrando <Text style={styles.textDestaq}>5</Text> de <Text style={styles.textDestaq}>45</Text> eventos</Text>
+          <Text style={styles.headerText}>
+            Mostrando <Text style={styles.textDestaq}>5</Text> de <Text style={styles.textDestaq}>45</Text> eventos
+          </Text>
           <FlatList
             data={eventos}
             keyExtractor={(item) => item.id}
@@ -107,16 +140,15 @@ export default function Home() {
                     <Link
                       href={{
                         pathname: "/evento/details",
-                        params: { evento: JSON.stringify(item) }, // envia os dados do evento
+                        params: { evento: JSON.stringify(item) },
                       }}
-                      style={styles.detailsButton}>
+                      style={styles.detailsButton}
+                    >
                       <Text style={styles.detailsText}>Mais Detalhes</Text>
                     </Link>
                   </View>
                 </View>
               </View>
-
-
             )}
           />
         </View>
@@ -125,3 +157,6 @@ export default function Home() {
   );
 }
 
+const localStyles = StyleSheet.create({
+  
+});

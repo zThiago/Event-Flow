@@ -1,10 +1,19 @@
 import { StyleSheet } from "react-native";
 
-export const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#f5f5f5" },
+const shadowBox = {
+  elevation: 3,
+  shadowColor: "#000",
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.2,
+  shadowRadius: 4,
+};
 
-  header: { padding: 20, marginTop: 20 ,alignSelf: 'center'},
-  welcome: { fontSize: 20, marginBottom: 10, alignSelf: 'center' },
+export const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: "#f5f5f5" ,paddingBottom: 35, },
+
+  header: { padding: 20, marginTop: 1, alignSelf: "center" },
+  headerText: { padding: 20, marginTop: 20, alignSelf: "center" },
+  welcome: { fontSize: 20, marginBottom: 10, alignSelf: "center" },
   search: {
     backgroundColor: "#dddbdbff",
     padding: 10,
@@ -12,9 +21,9 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#ddd",
     marginBottom: 15,
-    minWidth: 350
+    minWidth: 350,
   },
-  sectionTitle: { fontSize: 18, marginBottom: 8, alignSelf: 'center' },
+  sectionTitle: { fontSize: 18, marginBottom: 8, alignSelf: "center" },
   divider: { borderBottomColor: "#ccc", borderBottomWidth: 1 },
 
   mapaCard: {
@@ -24,11 +33,7 @@ export const styles = StyleSheet.create({
     borderRadius: 20,
     overflow: "hidden",
     backgroundColor: "#fff",
-    elevation: 5,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
+    ...shadowBox,
   },
 
   mapaFull: {
@@ -40,11 +45,7 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 16,
     overflow: "hidden",
-    elevation: 3, // sombra Android
-    shadowColor: "#000", // sombra iOS
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
+    ...shadowBox,
   },
   image: {
     width: "100%",
@@ -81,17 +82,30 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 36,
     paddingVertical: 4,
     backgroundColor: "#08007B",
-    borderRadius: 20
+    borderRadius: 20,
   },
   detailsText: {
-    color: "#007bff", // estilo link minimalista
     fontSize: 14,
     fontWeight: "500",
-    color: "white"
+    color: "white", // corrigido: removida duplicidade
   },
   textDestaq: {
-    fontWeight: 'bold'
-  }
-
-
+    fontWeight: "bold",paddingTop:100,
+  },
+  closeButton: {
+    position: "absolute",
+    top: 10,
+    left: 10,
+    backgroundColor: "rgba(0,0,0,0.6)",
+    padding: 6,
+    borderRadius: 20,
+    width: 40,
+    zIndex: 10,
+    alignItems: "center",
+  },
+  closeText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
 });
