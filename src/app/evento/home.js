@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, FlatList, Image } from 'react-native';
 import MapView, { Marker } from "react-native-maps";
 import { useState } from "react";
-import { styles } from '../styles/estilosHome';
+import { styles } from '../../styles/estilosHome';
 import { Link } from "expo-router";
 
 const coordinate = {
@@ -106,7 +106,7 @@ export default function Home() {
                     <Text style={styles.price}>Ingresso {item.preco}</Text>
                     <Link
                       href={{
-                        pathname: "/details",
+                        pathname: "/evento/details",
                         params: { evento: JSON.stringify(item) }, // envia os dados do evento
                       }}
                       style={styles.detailsButton}>

@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { Keyboard, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
 import { Link, useRouter } from 'expo-router';
-import { useAuth } from './temporario/authContext';
+import { useAuth } from '../temporario/authContext';
 import { useState } from 'react';
-import { styles } from '../styles/estilosLogin'
+import { styles } from '../../styles/estilosLogin'
 
 
 
@@ -24,7 +24,7 @@ export default function Index() {
         }
         if (cadastrado) {
             alert("login valido :)")
-            router.replace('/home')
+            router.replace('/evento/home')
 
         } else {
             alert("login invalido!!!")
@@ -67,7 +67,7 @@ export default function Index() {
                         <Text style={styles.botaoTexto}>Entrar</Text>
                     </TouchableOpacity>
 
-                    {linkCadastro && (<Link href={'/cadastro'} style={styles.linkText}>Ainda não tem um conta? Cadastre-se clicando aqui</Link>) }
+                    {linkCadastro && (<Link href={'/login/cadastro'} style={styles.linkText}>Ainda não tem um conta? Cadastre-se clicando aqui</Link>) }
 
 
                 </View>

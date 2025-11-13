@@ -2,8 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { Link, useRouter } from 'expo-router';
 import { useState } from 'react';
-import { styles } from '../styles/estilosLogin';
-import { useAuth } from './temporario/authContext';
+import { styles } from '../../styles/estilosLogin';
+import { useAuth } from '../temporario/authContext';
 
 export default function TelaCadastro() {
   const [email, setEmail] = useState('')

@@ -1,7 +1,7 @@
 import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { styles } from "../styles/detailsStyle";
+import { styles } from "../../styles/detailsStyle";
 
 export default function Details() {
     const { evento } = useLocalSearchParams();
