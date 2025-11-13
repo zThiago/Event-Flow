@@ -7,8 +7,9 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="login/index" options={{ headerShown: false }} />
         <Stack.Screen name="login/cadastro" options={{ title: "Cadastro" }} />
-        <Stack.Screen name="evento/home" options={{ title: "Home" }} />
-        <Stack.Screen name="evento/details" options={{ title: "Evento" }} />
+        <Stack.Screen name="evento" options={{headerShown: false}}/>
+        
+        
       </Stack>
     </AuthProvider>
   );
