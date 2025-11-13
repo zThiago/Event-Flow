@@ -47,6 +47,8 @@ export default function RootLayout() {
         <Drawer.Screen name="conta" options={{ title: "Minha Conta" }} />
         <Drawer.Screen name="notificacao" options={{ title: "Notificação" }} />
         <Drawer.Screen name="termo" options={{ title: "Termos" }} />
+        <Drawer.Screen name="locaisCadastrados" options={{title: "Home do adm"}}/>
+        <Drawer.Screen name="eventosCadastrado" options={{title: "HOme agoria fiui"}}/>
       </Drawer>
     </AuthProvider>
   );

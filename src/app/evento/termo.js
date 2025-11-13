@@ -1,23 +1,18 @@
-import { View, Text, ScrollView, StyleSheet ,TouchableOpacity} from "react-native";
+import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
 import { useRouter } from "expo-router";
 
 export default function Termo() {
-    const router = useRouter();
+  const router = useRouter();
   return (
     <ScrollView style={styles.container}>
 
-        
-        
-        
-         
-            
-                  {/* Botão de voltar */}
-              <TouchableOpacity
-                style={styles.button}
-                onPress={() => router.push("/evento/home")}
-              >
-                <Text style={styles.buttonText}>Voltar para Eventos</Text>
-              </TouchableOpacity>
+      {/* Botão de voltar */}
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => router.push("/evento/home")}
+      >
+        <Text style={styles.buttonText}>Voltar para Eventos</Text>
+      </TouchableOpacity>
       <Text style={styles.title}>📜 Termos de Uso e Política de Privacidade</Text>
 
       <Text style={styles.sectionTitle}>1. Introdução</Text>
