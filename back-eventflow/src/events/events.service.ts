@@ -7,6 +7,8 @@ export class EventsService {
     constructor(private prisma: PrismaService) { }
 
     async create(eventData: any, userId: string) {
+        eventData.createdAt = new Date();
+        eventData.ativo = true
         return this.prisma.event.create({
             data: {
                 ...eventData,
