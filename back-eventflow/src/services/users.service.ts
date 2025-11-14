@@ -1,6 +1,7 @@
-import { ConflictException, Injectable } from "@nestjs/common";
+import { ConflictException, Injectable, UseInterceptors } from "@nestjs/common";
 import { PrismaService } from "prisma/prisma.service";
 import { User } from "src/interfaces/user.interface";
+import { UserRole } from "@prisma/client";
 import * as bcrypt from 'bcryptjs';
 
 @Injectable()
@@ -33,7 +34,7 @@ export class UsersService {
             throw new ConflictException('Email já cadastrado');
         }
         const hashedPassword = await bcrypt.hash(userData.password, 12);
-        return this.prisma.user.create({data: {...userData, password: hashedPassword}})
+        return this.prisma.user.create({data: {...userData, role: UserRole.USER,password: hashedPassword}})
     }
 
     async update(id: number, userData: User){
@@ -48,14 +49,14 @@ export class UsersService {
         return this.prisma.event.findMany({
           where: { 
             creatorId: userId,
-            isActive: true 
+            ativo: true 
           },
           include: {
             _count: {
               select: {
-                registrations: {
+                participantes: {
                   where: {
-                    status: 'CONFIRMED',
+                    status: 'CONFIRMADO',
                   },
                 },
               },

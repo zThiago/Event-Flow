@@ -1,3 +1,4 @@
+
 export interface User {
     id: number;
     createdAt: Date;
@@ -5,5 +6,4 @@ export interface User {
     password: string;
     email: string;
     telefone: string;
-    
 }

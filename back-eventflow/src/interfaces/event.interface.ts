@@ -9,11 +9,11 @@ export interface Event {
 }
 
 export interface EventFilter {
-    id: number,
-    titulo: string,
-    data: Date,
-    localizacao: string,
-    status: string;
+    id?: number,
+    titulo?: string,
+    data?: Date,
+    localizacao?: string,
+    status?: string;
     page?: number;
     limit?: number
 }

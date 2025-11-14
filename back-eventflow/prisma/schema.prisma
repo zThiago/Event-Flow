@@ -6,11 +6,11 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
+  // output   = "../generated/prisma"  ← REMOVA ou COMENTE esta linha
 }
 
 datasource db {
-  provider = "postgresql"
+  provider  = "postgresql"
   url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
@@ -18,11 +18,12 @@ datasource db {
 model User {
   id              Int       @id @default(autoincrement())
   createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
   email           String    @unique
   nome            String?
   password        String    
   telefone        String
-  role            UserRole 
+  role            UserRole  @default(USER)
   
   eventsCreated   Event[]
   participando    Registros[]
