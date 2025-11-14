@@ -23,8 +23,14 @@ export default function Index() {
             return alert('Por favor preencha os campos')
         }
         if (cadastrado) {
-            alert("login valido :)")
-            router.replace('/evento/home')
+            if (cadastrado.email === "a"&& cadastrado.senha === "a") {
+                alert("Seja bem vindo ADM")
+                router.replace('/newEvento/eventosCadastrado')
+            } else {
+                alert("login valido :)")
+                router.replace('/evento/home')
+            }
+
 
         } else {
             alert("login invalido!!!")
@@ -34,47 +40,47 @@ export default function Index() {
 
 
     return (
-        <KeyboardAvoidingView style={{flex:1}} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View style={styles.container}>
-                <View style={styles.logo}>
-                    <Text style={styles.logoText}>
-                        LOGO
-                    </Text>
+                    <View style={styles.logo}>
+                        <Text style={styles.logoText}>
+                            LOGO
+                        </Text>
+                    </View>
+
+                    <View style={styles.login}>
+                        <TextInput
+                            placeholder='Email'
+                            style={styles.email}
+                            value={login}
+                            onChangeText={setLogin}
+
+                        ></TextInput>
+                        <TextInput
+                            placeholder='Senha'
+                            style={styles.senha}
+                            value={senha}
+                            onChangeText={setSenha}
+
+                        ></TextInput>
+
+
+                        <TouchableOpacity
+                            style={styles.botaoEntrar}
+                            onPress={() => validarLogin()}
+                        >
+                            <Text style={styles.botaoTexto}>Entrar</Text>
+                        </TouchableOpacity>
+
+                        {linkCadastro && (<Link href={'/login/cadastro'} style={styles.linkText}>Ainda não tem um conta? Cadastre-se clicando aqui</Link>)}
+
+
+                    </View>
+
                 </View>
-
-                <View style={styles.login}>
-                    <TextInput
-                        placeholder='Email'
-                        style={styles.email}
-                        value={login}
-                        onChangeText={setLogin}
-
-                    ></TextInput>
-                    <TextInput
-                        placeholder='Senha'
-                        style={styles.senha}
-                        value={senha}
-                        onChangeText={setSenha}
-
-                    ></TextInput>
-
-
-                    <TouchableOpacity
-                        style={styles.botaoEntrar}
-                        onPress={() => validarLogin()}
-                    >
-                        <Text style={styles.botaoTexto}>Entrar</Text>
-                    </TouchableOpacity>
-
-                    {linkCadastro && (<Link href={'/login/cadastro'} style={styles.linkText}>Ainda não tem um conta? Cadastre-se clicando aqui</Link>) }
-
-
-                </View>
-
-            </View>
             </TouchableWithoutFeedback>
-            
+
         </KeyboardAvoidingView>
 
     );

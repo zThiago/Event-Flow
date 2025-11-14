@@ -25,12 +25,16 @@ function CustomDrawerContent(props) {
         <Text style={{ fontSize: 16 }}>Minha Conta</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={{ marginVertical: 10 }} onPress={() => router.push("evento/termo")}>
-        <Text style={{ fontSize: 16 }}>Termos de Uso e Política</Text>
+      <TouchableOpacity style={{ marginVertical: 10 }} onPress={() => router.back()}>
+        <Text style={{ fontSize: 16 }}>Home</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={{ marginVertical: 10 }} onPress={() => router.push("evento/notificacao")}>
         <Text style={{ fontSize: 16 }}>Notificação</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={{ marginVertical: 10 }} onPress={() => router.push("evento/categorias")}>
+        <Text style={{ fontSize: 16 }}>Categorias</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={{ marginVertical: 10 }} onPress={() => router.replace("/login")}>
@@ -50,8 +54,9 @@ export default function RootLayout() {
         <Drawer.Screen name="evento/conta" options={{ title: "Minha Conta" }} />
         <Drawer.Screen name="evento/home" options={{title: "Home"}}/>
         <Drawer.Screen name="evento/termo" options={{ title: "Termos" }} />
-        <Drawer.Screen name="newEvento/locaisCadastrados" options={{title: "Home do adm"}}/>
-        <Drawer.Screen name="newEvento/eventosCadastrado" options={{title: "HOme agoria fiui"}}/>
+        <Drawer.Screen name="newEvento/locaisCadastrados" options={{title: "Home"}}/>
+        <Drawer.Screen name="newEvento/eventosCadastrado" options={{title: "Home"}}/>
+        <Drawer.Screen name="evento/categorias" options={{title: "Categorias"}}/>
       </Drawer>
     </AuthProvider>
   );
