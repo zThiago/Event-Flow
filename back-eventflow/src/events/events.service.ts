@@ -53,7 +53,7 @@ export class EventsService {
                     creator: {
                         select: {
                             id: true,
-                            name: true,
+                            nome: true,
                             email: true,
                             telefone: true
                         }
@@ -68,9 +68,9 @@ export class EventsService {
                         }
                     }
                 },
-                orderBy: { date: 'asc'},
+                orderBy: { data: 'asc'},
                 skip,
-                tale: limit
+                take: limit
             }),
             this.prisma.event.count({where})
         ]);
@@ -93,7 +93,7 @@ export class EventsService {
                 creator: {
                     select: {
                         id: true,
-                        name: true,
+                        nome: true,
                         email: true,
                         telefone: true
                     }
@@ -103,7 +103,7 @@ export class EventsService {
                         user: {
                             select: {
                                 id: true,
-                                name: true,
+                                nome: true,
                                 email: true,
                                 telefone: true
                             }
@@ -129,7 +129,7 @@ export class EventsService {
                 creator: {
                     select: {
                         id: true,
-                        name: true,
+                        nome: true,
                         email: true,
                         telefone: true
                     }
