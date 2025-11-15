@@ -24,9 +24,15 @@ async function bootstrap() {
     extraModels: []
   });
   SwaggerModule.setup('api', app, document, {
+    customSiteTitle: 'Event Flow API',
+    customfavIcon: false, // Remove o favicon para evitar 404
+    customCss: `
+      .swagger-ui .topbar { display: none }
+    `,
     swaggerOptions: {
-      persistAuthorization: true
-    }
+      persistAuthorization: true,
+      tryItOutEnabled: true,
+    },
   });
 
   await app.listen(process.env.PORT ?? 3000);
