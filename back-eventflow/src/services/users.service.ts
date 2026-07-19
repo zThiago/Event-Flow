@@ -42,7 +42,8 @@ export class UsersService {
     }
 
     async delete(id: number){
-        return this.prisma.user.delete({where: {id}});
+        let realNumberId = Number.parseInt(id);
+        return this.prisma.user.delete({where: {realNumberId}});
     }
 
     async getUserEvents(userId: number) {
