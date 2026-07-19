@@ -114,7 +114,7 @@ export class UsersController {
   @ApiResponse({ status: 403, description: 'Acesso negado' })
   @ApiResponse({ status: 404, description: 'Usuário não encontrado' })
   async remove(@Param('id') id: number) {
-    await this.usersService.delete(id);
+    await this.usersService.delete(Number(id));
 
     return {
       statusCode: 200,
